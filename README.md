@@ -1,2 +1,3 @@
-# JOD082
-Projeto Integrador - Big Game: Início
+# Projeto Integrador - Big Game: Início
+
+Repositório criado para realização de atividades práticas desta disciplina.
