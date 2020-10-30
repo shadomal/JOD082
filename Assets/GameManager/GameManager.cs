@@ -26,9 +26,12 @@ public class GameManager : MonoBehaviour
     private float turnTime;
 
 
-    void Start()
+    void Awake()
     {
-
+        turnos = 10;
+        MaxTurnos = 10;
+        turnTime = 360;
+        
     }
 
     private STATE_GAME state;
@@ -67,11 +70,16 @@ public class GameManager : MonoBehaviour
         // teleportar os usuários até a localização de especs
     }
 
+    public void GetPlayers()
+    {
+
+    }
     // Update is called once per frame
     void Update()
     {
 
     }
+
     //Criar um método pra troca os jogador quando acabar o tempo
     //Checar se um jogador morreu
 }
