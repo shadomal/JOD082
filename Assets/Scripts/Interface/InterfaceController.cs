@@ -67,6 +67,9 @@ public class InterfaceController : MonoBehaviour
     public void ConfigMenu()
     {
         SceneManager.LoadScene("ConfigMenu");
+    }public void menuOpcao()
+    {
+        SceneManager.LoadScene("menuPause");
     }
     #endregion
     #region Functions

@@ -38,8 +38,8 @@ public class PlayerController : MonoBehaviour
         maxLife_ = 150;
         speed = 20;
         rigidPlayer = GetComponent<Rigidbody>();
-        stamina = 150;
-        maxStamina = 250;
+        stamina = 250;
+        maxStamina = 350;
         StaminaCost = 0.8f;
         SightAnimation = GetComponent<Animator>();
         animator = GetComponent<Animator>();
@@ -55,9 +55,16 @@ public class PlayerController : MonoBehaviour
         {
             RemoveHealth(10);
         }
-        if (other.gameObject.tag == "shoot")
+        if (other.gameObject.tag == "enemyShoot")
         {
-            RemoveHealth(10);
+            RemoveHealth(30);
+        }
+    }
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "enemyShoot")
+        {
+            RemoveHealth(30);
         }
     }
 
@@ -151,7 +158,7 @@ public class PlayerController : MonoBehaviour
 
     public void UpdateStaminaBar()
     {
-        this.StaminaBar.fillAmount = ((1.0f / ((float)this.maxStamina)) * ((float)this.stamina));
+        this.StaminaBar.fillAmount = ((1.6f / ((float)this.maxStamina)) * ((float)this.stamina));
     }
     #endregion
     #region VIDA
@@ -170,11 +177,12 @@ public class PlayerController : MonoBehaviour
         if (life_ <= 0)
         {
             DeathController();
+            DisableSight();
         }
     }
     public void AddHealth(int life) => this.SetLife(this.life_ + life);
     public void RemoveHealth(int life) => this.SetLife(this.life_ - life);
-    public void UpdateLifeBar() => this.LifeBar.fillAmount = ((1.0f / this.maxLife_) * this.life_);
+    public void UpdateLifeBar() => this.LifeBar.fillAmount = ((1.6f / this.maxLife_) * this.life_);
     public void DeathController() => Destroy(gameObject);
     #endregion
     #endregion
@@ -197,6 +205,10 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-
     #endregion
+    [SerializeField] private GameObject cam;
+    public void DisableSight()
+    {
+        cam.SetActive(false);
+    }
 }
