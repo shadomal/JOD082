@@ -23,8 +23,8 @@ public class enemyConfig : EnemyAI
     {
         vida = 10;
         vidaMaxima = 50;
-        stamina = 150;
-        MaxStamina = 350;
+        stamina = 350;
+        MaxStamina = 450;
         ammo = 10;
         magazines = 3;
         timeToShoot = 3;
@@ -32,40 +32,45 @@ public class enemyConfig : EnemyAI
     }
 
     #region Colisores e Triggers
+
     void OnTriggerEnter(Collider other)
     {
-        /*
-		Fazer várias verificações de IF é pesado, ainda mais quando não está usando ELSE IF
-		
-        if (other.gameObject.tag == "Tiro")
+
+        //Fazer várias verificações de IF é pesado, ainda mais quando não está usando ELSE IF
+
+        if (other.gameObject.tag == "Tiro" || other.gameObject.tag == "pistolShoot")
         {
             RemoveHealth(5);
             Debug.Log("Dei trigger com: " + " " + gameObject.tag + " " + "Vida atual: " + this.vida);
         }
-        if (other.gameObject.tag == "Player")
+        else if (other.gameObject.tag == "Player")
         {
             RemoveHealth(2);
             Debug.Log("Dei trigger com: " + " " + gameObject.tag + " " + "Vida atual: " + this.vida);
-        }*/
+        }
+        else if (other.gameObject.tag == "enemyShoot")
+        {
+            RemoveHealth(5);
+        }
 
         /* 
 		uma boa forma de melhorar esse código é usar o switch
 		creio que seja uma das melhores formas de melhorar
 		*/
 
-        switch (other.gameObject.tag)
+        /*switch (other.gameObject.tag)
         {
             case "Tiro":
                 RemoveHealth(5);
                 Debug.Log("Dei trigger com: " + " " + gameObject.tag + " " + "Vida atual: " + this.vida);
                 break;
-            case "Player":
+            case "pistolShoot":
                 RemoveHealth(2);
                 Debug.Log("Dei trigger com: " + " " + gameObject.tag + " " + "Vida atual: " + this.vida);
                 break;
             default:
                 break;
-        }
+        }*/
     }
 
     void OnCollisionEnter(Collision otherCollision)
@@ -73,6 +78,11 @@ public class enemyConfig : EnemyAI
         if (otherCollision.gameObject.tag == "Tiro" || otherCollision.gameObject.tag == "Player")
         {
             RemoveHealth(1);
+            Debug.Log("Colidi com" + " " + gameObject.tag + " " + "Vida atual: " + this.vida);
+        }
+        else if (otherCollision.gameObject.tag == "enemyShoot")
+        {
+            RemoveHealth(5);
             Debug.Log("Colidi com" + " " + gameObject.tag + " " + "Vida atual: " + this.vida);
         }
     }
@@ -94,6 +104,8 @@ public class enemyConfig : EnemyAI
         {
             //enemyDeath();
             killPlayer();
+            WinOrLose Test = new WinOrLose();
+            Test.WinCondition();
         }
     }
     /*
