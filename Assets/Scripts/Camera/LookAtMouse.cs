@@ -11,7 +11,7 @@ public class LookAtMouse : MonoBehaviour
         Ray rayOrigin = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitInfo;
 
-        if (Physics.Raycast(rayOrigin, out hitInfo)) ;
+        if (Physics.Raycast(rayOrigin, out hitInfo))
         {
             if (hitInfo.collider != null)
             {
