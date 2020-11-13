@@ -40,8 +40,10 @@
      <Compile Include="Assets\Scripts\Camera\LookAtMouse.cs" />
      <Compile Include="Assets\Scripts\Camera\Reticula.cs" />
      <Compile Include="Assets\Scripts\GlobalCooldown\CooldownManager.cs" />
-     <Compile Include="Assets\Scripts\Interface\InterfaceController.cs" />
      <Compile Include="Assets\Scripts\Interface\PauseMenu.cs" />
+     <Compile Include="Assets\Scripts\Interface\ResetScene.cs" />
+     <Compile Include="Assets\Scripts\Interface\SceneController.cs" />
+     <Compile Include="Assets\Scripts\Interface\WinOrLose.cs" />
      <Compile Include="Assets\Scripts\PlayerScript\Arm.cs" />
      <Compile Include="Assets\Scripts\PlayerScript\PlayerControl.cs" />
      <Compile Include="Assets\Scripts\PlayerScript\PlayerController.cs" />
@@ -54,8 +56,6 @@
      <Compile Include="Assets\Scripts\PlayerScript\PlayerWeapons\PlayerSight.cs" />
      <Compile Include="Assets\Scripts\PlayerScript\PlayerWeapons\RayCastShoot.cs" />
      <Compile Include="Assets\Scripts\PlayerScript\PlayerWeapons\Shoot.cs" />
-     <Compile Include="Assets\Scripts\ResetScene.cs" />
-     <Compile Include="Assets\Scripts\WinOrLose.cs" />
      <Compile Include="Assets\Scripts\enemy\EnemyAI.cs" />
      <Compile Include="Assets\Scripts\enemy\EnemyCore.cs" />
      <Compile Include="Assets\Scripts\enemy\enemyConfig.cs" />

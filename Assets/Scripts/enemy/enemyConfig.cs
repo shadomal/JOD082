@@ -129,6 +129,10 @@ public class enemyConfig : EnemyAI
 
     public void SetStamina(int stamina)
     {
+        if (IsGamePaused())
+        {
+            return;
+        }
         if (!CooldownManager.IsExpired("enemy", "stamina"))
         {
             return;
@@ -151,12 +155,8 @@ public class enemyConfig : EnemyAI
     public void RemoveStamina(int stamina) => this.SetStamina(this.GetStamina() - stamina);
     public void FindPlayer()
     {
-        //tracking();
         trackPlayer();
-
-        RemoveStamina(10);
-        Debug.Log("Stamina atual do inimigo: " + stamina);
-        //if (this.enemyExhausted())
+        RemoveStamina(10); 
         if (this.isEnemyExhausted())
         {
             GameObject enemyObj = GameObject.Find("Inimigo");
@@ -203,6 +203,10 @@ public class enemyConfig : EnemyAI
     [SerializeField] private AudioSource gunSFX;
     public void shootEffect() => gunSFX.Play();
     public void DestroyProjectile() => Destroy(gameObject, timeDestroyShoot);
+    public bool IsGamePaused()
+    {
+        return Time.timeScale == 0;
+    }
 }
 #endregion
 #endregion
