@@ -6,6 +6,7 @@ public class WinOrLose : MonoBehaviour
 {
     public GameObject playerObj, enemyObj;
     public GameObject win, lose;
+    public GameObject GameInterface;
     void Start()
     {
 
@@ -21,10 +22,12 @@ public class WinOrLose : MonoBehaviour
         if (playerObj == null && enemyObj != null)
         {
             lose.SetActive(true);
+            GameInterface.SetActive(false);
         }
         else if(enemyObj == null)
         {
             win.SetActive(true);
+            GameInterface.SetActive(false);
         }
     }
 }

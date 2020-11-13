@@ -94,25 +94,10 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("Blend X", moveH);
         animator.SetFloat("Blend Y", moveV);
 
-        /*if (moveV > 0)
-        {
-            SightAnimation.SetTrigger("frente");
-        }
-        else if (moveV < 0)
-        {
-            SightAnimation.SetTrigger("traz");
-        }*/
-
         if (moveV != 0 && moveH == 0)
         {
             this.RemoveStamina(10);
-            Debug.Log("Minha stamina atual: " + stamina);
         }
-
-        //animator.SetFloat("Blend X", moveH);
-        //animator.SetFloat("Blend Y", moveV);
-        //transform.position += (Vector3.forward * speed) * moveV * Time.deltaTime;
-        //transform.position -= (Vector3.back * speed) * moveV * Time.deltaTime;
     }
     #endregion
     public void Anim()
@@ -126,6 +111,10 @@ public class PlayerController : MonoBehaviour
     public int GetStamina() => this.stamina;
     public void SetStamina(int stamina)
     {
+        if (IsGamePaused())
+        {
+            return;
+        }
         if (!CooldownManager.IsExpired("shadomal", "stamina"))
         {
             return;
@@ -210,5 +199,12 @@ public class PlayerController : MonoBehaviour
     public void DisableSight()
     {
         cam.SetActive(false);
+    }
+
+    private bool IsPause = false;
+
+    public bool IsGamePaused()
+    {
+        return Time.timeScale == 0;
     }
 }

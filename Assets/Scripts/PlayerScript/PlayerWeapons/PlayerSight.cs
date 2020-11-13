@@ -18,7 +18,7 @@ public class PlayerSight : MonoBehaviour
     [SerializeField] private AudioSource ReloadWeapon;
     void Awake()
     {
-        municao = 10;
+        municao = 1000000;
         pente = 3;
         fireHate = 1.5f;
         timeToShoot = 3;
